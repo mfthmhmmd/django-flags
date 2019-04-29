@@ -2,7 +2,7 @@ import warnings
 
 from django.test import TestCase, override_settings
 
-from flags.models import FlagState
+from flags.models import FlagCondition
 from flags.sources import (
     Condition,
     DatabaseFlagsSource,
@@ -101,7 +101,7 @@ class SettingsFlagsSourceTestCase(TestCase):
 class DatabaseFlagsSourceTestCase(TestCase):
 
     def test_get_flags(self):
-        FlagState.objects.create(
+        FlagCondition.objects.create(
             name='MY_FLAG',
             condition='boolean',
             value='False'

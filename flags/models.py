@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class FlagState(models.Model):
+class FlagCondition(models.Model):
     name = models.CharField(max_length=64)
     condition = models.CharField(max_length=64, default='boolean')
     value = models.CharField(max_length=127, default='True')

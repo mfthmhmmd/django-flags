@@ -1,11 +1,11 @@
 from django import forms
 
 from flags.conditions import get_conditions
-from flags.models import FlagState
+from flags.models import FlagCondition
 from flags.sources import get_flags
 
 
-class FlagStateForm(forms.ModelForm):
+class FlagConditionForm(forms.ModelForm):
     name = forms.ChoiceField(
         label='Flag',
         required=True
@@ -26,7 +26,7 @@ class FlagStateForm(forms.ModelForm):
     )
 
     def __init__(self, *args, **kwargs):
-        super(FlagStateForm, self).__init__(*args, **kwargs)
+        super(FlagConditionForm, self).__init__(*args, **kwargs)
 
         self.fields['name'].choices = [
             (f, f) for f in sorted(get_flags().keys())
@@ -37,5 +37,5 @@ class FlagStateForm(forms.ModelForm):
         ]
 
     class Meta:
-        model = FlagState
+        model = FlagCondition
         fields = ('name', 'condition', 'value', 'required')

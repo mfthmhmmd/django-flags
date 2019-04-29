@@ -101,7 +101,7 @@ class SettingsFlagsSource(object):
 
 
 class DatabaseCondition(Condition):
-    """ Condition that includes the FlagState database object """
+    """ Condition that includes the FlagCondition database object """
 
     def __init__(self, condition, value, required=False, obj=None):
         super(DatabaseCondition, self).__init__(
@@ -113,8 +113,8 @@ class DatabaseCondition(Condition):
 class DatabaseFlagsSource(object):
 
     def get_queryset(self):
-        FlagState = apps.get_model('flags', 'FlagState')
-        return FlagState.objects.all()
+        FlagCondition = apps.get_model('flags', 'FlagCondition')
+        return FlagCondition.objects.all()
 
     def get_flags(self):
         flags = {}

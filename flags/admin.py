@@ -1,11 +1,12 @@
 from django.contrib import admin
 
-from flags.forms import FlagStateForm
-from flags.models import FlagState
+from flags.forms import FlagConditionForm
+from flags.models import FlagCondition
 
 
-class FlagStateAdmin(admin.ModelAdmin):
-    form = FlagStateForm
+class FlagsAdmin(admin.ModelAdmin):
+    form = FlagConditionForm
 
 
 admin.site.register(FlagState, FlagStateAdmin)
+admin.site.register(FlagCondition, FlagsAdmin)

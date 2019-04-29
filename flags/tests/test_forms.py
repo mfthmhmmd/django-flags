@@ -1,13 +1,13 @@
 from django.test import TestCase
 
 from flags.conditions import CONDITIONS, register
-from flags.forms import FlagStateForm
+from flags.forms import FlagConditionForm
 
 
 class FormTestCase(TestCase):
 
     def test_valid_data(self):
-        form = FlagStateForm({
+        form = FlagConditionForm({
             'name': 'FLAG_ENABLED',
             'condition': 'boolean',
             'value': 'True'
@@ -19,7 +19,7 @@ class FormTestCase(TestCase):
         self.assertEqual(state.value, 'True')
 
     def test_blank_data(self):
-        form = FlagStateForm({})
+        form = FlagConditionForm({})
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors, {
             'name': ['This field is required.'],
@@ -37,7 +37,7 @@ class FormTestCase(TestCase):
 
         self.addCleanup(cleanup_condition, 'fake_condition')
 
-        form = FlagStateForm()
+        form = FlagConditionForm()
         self.assertIn(
             ('fake_condition', 'fake_condition'),
             form.fields['condition'].choices
