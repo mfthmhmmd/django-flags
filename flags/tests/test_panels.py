@@ -1,7 +1,6 @@
 from django.test import RequestFactory, TestCase, override_settings
 
 from debug_toolbar.toolbar import DebugToolbar
-
 from flags.middleware import FlagConditionsMiddleware
 
 
